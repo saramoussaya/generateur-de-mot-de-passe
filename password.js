@@ -143,7 +143,7 @@ function showNotification(message, type = "success") {
     notification.classList.add("error");
   }
 
-  // Faire disparaître la notification après 3 secondes
+  // Faire disparaître la notification après 3 secondes.
   setTimeout(() => {
     notification.classList.remove("show");
   }, 3000);
