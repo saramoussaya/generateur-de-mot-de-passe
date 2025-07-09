@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Générateur de Mots de Passe</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Générateur de Mots de Passe</h1>
+
+    <div class="password-generator">
+      <div class="output">
+        <input
+          type="text"
+          id="password"
+          readonly
+          placeholder="Votre mot de passe ici"
+          aria-label="Mot de passe généré"
+        />
+        <button id="copy-btn" aria-label="Copier le mot de passe">Copier</button>
+      </div>
+
+      <div class="strength-meter" aria-live="polite" aria-atomic="true">
+        <div id="strength-bar"></div>
+        <p id="strength-text">Force : Faible</p>
+      </div>
+
+      <div class="settings">
+        <label for="length">
+          Longueur :
+          <input
+            type="number"
+            id="length"
+            min="4"
+            max="32"
+            value="12"
+            aria-describedby="length-desc"
+          />
+        </label>
+        <small id="length-desc">Choisissez entre 4 et 32 caractères</small>
+
+        <label>
+          <input type="checkbox" id="uppercase" checked />
+          Inclure des majuscules
+        </label>
+        <label>
+          <input type="checkbox" id="lowercase" checked />
+          Inclure des minuscules
+        </label>
+        <label>
+          <input type="checkbox" id="numbers" checked />
+          Inclure des chiffres
+        </label>
+        <label>
+          <input type="checkbox" id="symbols" checked />
+          Inclure des caractères spéciaux
+        </label>
+      </div>
+
+      <div class="buttons">
+        <button id="generate-btn">Générer un mot de passe</button>
+        <button id="save-btn">Sauvegarder</button>
+        <button id="dark-mode-toggle">Activer le mode sombre</button>
+      </div>
+
+      <div class="saved-passwords" aria-live="polite" aria-atomic="true">
+        <h2>Mots de passe sauvegardés</h2>
+        <ul id="saved-list"></ul>
+      </div>
+    </div>
+  </div>
+<div id="notification" class="notification"></div>
+
+  <script src="password.js"></script>
+</body>
+</html>

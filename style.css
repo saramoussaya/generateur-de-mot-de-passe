@@ -1,0 +1,256 @@
+/* Reset et base */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #4a90e2, #7bb3f0);
+  color: #333;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.container {
+  background: #fff;
+  padding: 25px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  width: 400px;
+  max-width: 100%;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: #4a90e2;
+}
+
+.password-generator {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.output {
+  display: flex;
+  gap: 10px;
+}
+
+#password {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  user-select: all;
+}
+
+#copy-btn {
+  padding: 10px 15px;
+  background: #4a90e2;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#copy-btn:hover {
+  background: #357ab8;
+}
+
+.strength-meter {
+  text-align: left;
+}
+
+#strength-bar {
+  height: 10px;
+  width: 100%;
+  background: #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+}
+
+#strength-bar::after {
+  content: '';
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: red;
+  transition: width 0.3s ease, background 0.3s ease;
+  border-radius: 5px;
+}
+
+#strength-text {
+  font-size: 14px;
+  margin-top: 5px;
+  color: #333;
+}
+
+.settings label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.settings small {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  color: #666;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.buttons button {
+  flex: 1 1 30%;
+  padding: 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #fff;
+  transition: background 0.3s ease;
+}
+
+#generate-btn {
+  background: #e91e63;
+}
+
+#generate-btn:hover {
+  background: #c2185b;
+}
+
+#save-btn {
+  background: #4caf50;
+}
+
+#save-btn:hover {
+  background: #388e3c;
+}
+
+#dark-mode-toggle {
+  background: #607d8b;
+}
+
+#dark-mode-toggle:hover {
+  background: #455a64;
+}
+
+.saved-passwords {
+  margin-top: 20px;
+  text-align: left;
+  max-height: 150px;
+  overflow-y: auto;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+}
+
+.saved-passwords h2 {
+  font-size: 18px;
+  color: #4a90e2;
+  margin-bottom: 10px;
+}
+
+#saved-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#saved-list li {
+  background: #f9f9f9;
+  padding: 8px 10px;
+  margin-bottom: 6px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: monospace;
+  font-size: 14px;
+}
+
+#saved-list li button {
+  background: #e91e63;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background 0.3s ease;
+}
+
+#saved-list li button:hover {
+  background: #c2185b;
+}
+
+/* Mode sombre */
+body.dark-mode {
+  background: #121212;
+  color: #eee;
+}
+
+body.dark-mode .container {
+  background: #1e1e1e;
+  color: #eee;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode #password,
+body.dark-mode button {
+  background: #333;
+  color: #eee;
+  border: 1px solid #555;
+}
+
+body.dark-mode .saved-passwords {
+  border-top-color: #555;
+}
+
+body.dark-mode #saved-list li {
+  background: #2a2a2a;
+}
+
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #4caf50; /* Vert par défaut */
+  color: white;
+  padding: 15px 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  transform: translateY(-20px);
+  z-index: 1000;
+  font-weight: bold;
+  min-width: 200px;
+  text-align: center;
+}
+
+.notification.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.notification.error {
+  background-color: #f44336; /* Rouge pour erreur */
+}
